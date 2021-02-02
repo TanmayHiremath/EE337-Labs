@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  Q2                                                                   01/23/2021 19:56:08 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Q2.lst) OBJECT(.\Objects\Q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7940              2     MOV R1,#40H
+0002 7A00              3     MOV R2,#00H
+0004 7D14              4     MOV R5,#14H
+0006 E7                5     loop:MOV A,@R1 
+0007 C3                6     CLR C
+0008 9A                7     SUBB A,R2
+0009 09                8     INC R1
+000A 4001              9     JC label1
+000C FA               10     MOV R2,A
+000D DDF7             11     label1: DJNZ R5,loop
+                      12     
+                      13     
+000F 7940             14     MOV R1,#40H
+0011 7B00             15     MOV R3,#00H
+0013 7D14             16     MOV R5,#14H
+0015 E7               17     loop2:MOV A,@R1
+0016 C3               18     CLR C
+0017 9A               19     SUBB A,R2
+0018 7005             20     JNZ label2
+001A EA               21     MOV A,R2
+001B FC               22     MOV R4,A
+001C 020027           23     LJMP here
+001F C3               24     label2:CLR C
+0020 9B               25     SUBB A,R3
+0021 09               26     INC R1
+0022 4001             27     JC label3
+0024 FB               28     MOV R3,A
+0025 DDEE             29     label3: DJNZ R5,loop2
+                      30     
+0027 80FE             31     here:SJMP here
+                      32     END
+A51 MACRO ASSEMBLER  Q2                                                                   01/23/2021 19:56:08 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0027H   A   
+LABEL1 . . . . . .  C ADDR   000DH   A   
+LABEL2 . . . . . .  C ADDR   001FH   A   
+LABEL3 . . . . . .  C ADDR   0025H   A   
+LOOP . . . . . . .  C ADDR   0006H   A   
+LOOP2. . . . . . .  C ADDR   0015H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

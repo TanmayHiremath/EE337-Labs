@@ -1,0 +1,86 @@
+A51 MACRO ASSEMBLER  LAB1Q2                                                               01/29/2021 22:58:29 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab1Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab1Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab1Q2.lst) OBJECT(.\Objec
+                      ts\Lab1Q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 75407F            2     MOV 40H, #7FH
+0003 75417E            3     MOV 41H, #7EH
+0006 75427D            4     MOV 42H, #7DH
+0009 75437C            5     MOV 43H, #7CH
+000C 75447B            6     MOV 44H, #7BH
+000F 75457A            7     MOV 45H, #7AH
+0012 754679            8     MOV 46H, #79H
+0015 754778            9     MOV 47H, #78H
+0018 754877           10     MOV 48H, #77H
+001B 754976           11     MOV 49H, #76H
+001E 754A75           12     MOV 4AH, #75H
+0021 754B74           13     MOV 4BH, #74H
+0024 754C73           14     MOV 4CH, #73H
+0027 754D72           15     MOV 4DH, #72H
+002A 754E71           16     MOV 4EH, #71H
+002D 754F70           17     MOV 4FH, #70H
+0030 75506F           18     MOV 50H, #6FH
+0033 75516E           19     MOV 51H, #6EH
+0036 75526D           20     MOV 52H, #6DH
+0039 75536C           21     MOV 53H, #6CH
+003C 7940             22     MOV R1,#40H
+003E 7A00             23     MOV R2,#00H
+0040 7D14             24     MOV R5,#14H
+0042 E7               25     loop:MOV A,@R1
+0043 FC               26     MOV R4,A
+0044 C3               27     CLR C
+0045 9A               28     SUBB A,R2
+0046 09               29     INC R1
+0047 4005             30     JC label1
+0049 EC               31     MOV A,R4
+004A FA               32     MOV R2,A
+004B E9               33     MOV A,R1
+004C FE               34     MOV R6,A
+004D 1E               35     DEC R6
+004E DDF2             36     label1: DJNZ R5,loop
+                      37     
+                      38     
+0050 7940             39     MOV R1,#40H
+0052 7B00             40     MOV R3,#00H
+0054 7D14             41     MOV R5,#14H
+0056 E9               42     loop2:MOV A,R1
+0057 6E               43     XRL A,R6
+0058 7001             44     JNZ label2
+005A 09               45     INC R1
+005B C3               46     label2:CLR C
+005C E7               47     MOV A,@R1
+005D FC               48     MOV R4,A
+005E 9B               49     SUBB A,R3
+005F 09               50     INC R1
+0060 4002             51     JC label3
+0062 EC               52     MOV A,R4
+0063 FB               53     MOV R3,A
+0064 DDF0             54     label3: DJNZ R5,loop2
+0066 8A70             55     MOV 70H,R2
+0068 8B71             56     MOV 71H,R3
+                      57     END
+A51 MACRO ASSEMBLER  LAB1Q2                                                               01/29/2021 22:58:29 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LABEL1 . . . . . .  C ADDR   004EH   A   
+LABEL2 . . . . . .  C ADDR   005BH   A   
+LABEL3 . . . . . .  C ADDR   0064H   A   
+LOOP . . . . . . .  C ADDR   0042H   A   
+LOOP2. . . . . . .  C ADDR   0056H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

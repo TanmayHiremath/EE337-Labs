@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 01/23/2021 17:18:43 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\main.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE main.asm SET(SMALL) DEBUG PRINT(.\Listings\main.lst) OBJECT(.\Objects\m
+                      ain.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 75700A            2     MOV 70H,#0AH
+0003 E570              3     MOV A,70H
+0005 7908              4     MOV R1,#08H
+0007 7A00              5     MOV R2,#00H
+0009 33                6     loop:RLC A
+000A 5001              7     JNC label2
+000C 0A                8     INC R2
+000D D9FA              9     label2:DJNZ R1,loop
+000F 80FE             10     here:SJMP here
+                      11     end
+A51 MACRO ASSEMBLER  MAIN                                                                 01/23/2021 17:18:43 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   000FH   A   
+LABEL2 . . . . . .  C ADDR   000DH   A   
+LOOP . . . . . . .  C ADDR   0009H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

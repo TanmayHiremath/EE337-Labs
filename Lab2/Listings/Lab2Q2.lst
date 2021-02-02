@@ -1,0 +1,97 @@
+A51 MACRO ASSEMBLER  LAB2Q2                                                               02/01/2021 15:56:39 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab2Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab2Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab2Q2.lst) OBJECT(.\Objec
+                      ts\Lab2Q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 756004            1     MOV 60H, #04H
+0003 756101            2     MOV 61H, #01H
+0006 756200            3     MOV 62H, #00H
+0009 756300            4     MOV 63H, #00H
+000C 756400            5     MOV 64H, #00H
+000F 756500            6     MOV 65H, #00H
+0012 756601            7     MOV 66H, #01H
+0015 756700            8     MOV 67H, #00H
+0018 756800            9     MOV 68H, #00H
+001B 756900           10     MOV 69H, #00H
+001E 756A03           11     MOV 6AH, #03H
+0021 756B00           12     MOV 6BH, #00H
+0024 756C01           13     MOV 6CH, #01H
+0027 756D00           14     MOV 6DH, #00H
+002A 756E00           15     MOV 6EH, #00H
+002D 756F01           16     MOV 6FH, #01H
+0030 757001           17     MOV 70H, #01H
+                      18     
+                      19     
+                      20     
+                      21     
+                      22     
+0033 751140           23     MOV 11H,#40H
+0036 751060           24     MOV 10H,#60H
+0039 AA60             25     MOV R2,60H
+003B AB60             26     loop: MOV R3,60H
+003D EB               27     loop2:MOV A,R3
+003E 14               28     DEC A
+003F 8560F0           29     MOV B,60H
+0042 A4               30     MUL AB
+0043 2510             31     ADD A,10H
+0045 2A               32     ADD A,R2
+0046 F8               33     MOV R0,A
+0047 E6               34     MOV A,@R0
+0048 FC               35     MOV R4,A
+                      36     
+                      37     
+0049 EA               38     MOV A,R2
+004A 14               39     DEC A
+004B 8560F0           40     MOV B,60H
+004E A4               41     MUL AB
+004F 2511             42     ADD A,11H
+0051 2B               43     ADD A,R3
+0052 F9               44     MOV R1,A
+0053 EC               45     MOV A,R4
+0054 F7               46     MOV @R1,A
+0055 DBE6             47     DJNZ R3,loop2
+0057 DAE2             48     DJNZ R2,loop
+                      49     
+0059 7941             50     MOV R1,#41H
+005B 7861             51     MOV R0,#61H
+005D AA60             52     MOV R2,60H
+005F E7               53     loop3:MOV A,@R1
+0060 FC               54     MOV R4,A
+0061 E6               55     MOV A,@R0
+0062 B50409           56     CJNE A,04H,finish
+0065 08               57     INC R0
+A51 MACRO ASSEMBLER  LAB2Q2                                                               02/01/2021 15:56:39 PAGE     2
+
+0066 09               58     INC R1
+0067 DAF6             59     DJNZ R2,loop3
+0069 D2D5             60     SETB PSW.5
+006B 020070           61     LJMP here
+006E C2D5             62     finish:CLR PSW.5
+0070 80FE             63     here:sjmp here
+                      64     END
+A51 MACRO ASSEMBLER  LAB2Q2                                                               02/01/2021 15:56:39 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+FINISH . . . . . .  C ADDR   006EH   A   
+HERE . . . . . . .  C ADDR   0070H   A   
+LOOP . . . . . . .  C ADDR   003BH   A   
+LOOP2. . . . . . .  C ADDR   003DH   A   
+LOOP3. . . . . . .  C ADDR   005FH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

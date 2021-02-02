@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  LAB2Q1                                                               01/30/2021 13:16:25 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab2Q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab2Q1.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab2Q1.lst) OBJECT(.\Objec
+                      ts\Lab2Q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 7550FE            1     MOV 50H,#0FEH
+0003 E550              2     MOV A,50H
+0005 75F00A            3     MOV B,#10
+0008 84                4     DIV AB
+0009 85F053            5     MOV 53H,B
+000C 75F00A            6     MOV B,#10
+000F 84                7     DIV AB
+0010 F552              8     MOV 52H,A
+0012 E5F0              9     MOV A,B
+0014 C3               10     CLR C
+0015 33               11     RLC A
+0016 33               12     RLC A
+0017 33               13     RLC A
+0018 33               14     RLC A
+0019 2553             15     ADD A,53H
+001B F553             16     MOV 53H,A
+                      17     END
+A51 MACRO ASSEMBLER  LAB2Q1                                                               01/30/2021 13:16:25 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

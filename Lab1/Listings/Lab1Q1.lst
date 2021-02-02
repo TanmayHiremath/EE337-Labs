@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  LAB1Q1                                                               01/25/2021 15:08:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab1Q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab1Q1.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab1Q1.lst) OBJECT(.\Objec
+                      ts\Lab1Q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000                   2     MOV 70H,#FFH
+*** __________________________________^
+*** ERROR #A45 IN 2 (Lab1Q1.asm, LINE 2): UNDEFINED SYMBOL (PASS-2)
+0003 E570              3     MOV A,70H
+0005 7908              4     MOV R1,#08H
+0007 7A00              5     MOV R2,#00H
+0009 33                6     loop:RLC A
+000A 5001              7     JNC label2
+000C 0A                8     INC R2
+000D D9FA              9     label2:DJNZ R1,loop
+000F 8A71             10     MOV 71H,R2
+0011 80FE             11     here:SJMP here
+                      12     end
+A51 MACRO ASSEMBLER  LAB1Q1                                                               01/25/2021 15:08:22 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FFH. . . . . . . .    ----   -----       
+HERE . . . . . . .  C ADDR   0011H   A   
+LABEL2 . . . . . .  C ADDR   000DH   A   
+LOOP . . . . . . .  C ADDR   0009H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 1 ERROR(S)

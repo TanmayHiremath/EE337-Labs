@@ -1,0 +1,56 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/01/2021  14:48:57  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\Lab2Q1.obj TO .\Objects\Lab2Q1 PRINT (.\Listings\Lab2Q1.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\Lab2Q1.obj (LAB2Q1)
+
+
+LINK MAP OF MODULE:  .\Objects\Lab2Q1 (LAB2Q1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     001DH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Lab2Q1 (LAB2Q1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LAB2Q1
+  D:00F0H         SYMBOL        B
+  C:0000H         LINE#         65533
+  C:0003H         LINE#         2
+  C:0005H         LINE#         3
+  C:0008H         LINE#         4
+  C:0009H         LINE#         5
+  C:000CH         LINE#         6
+  C:000FH         LINE#         7
+  C:0010H         LINE#         8
+  C:0012H         LINE#         9
+  C:0014H         LINE#         10
+  C:0015H         LINE#         11
+  C:0016H         LINE#         12
+  C:0017H         LINE#         13
+  C:0018H         LINE#         14
+  C:0019H         LINE#         15
+  C:001BH         LINE#         16
+  -------         ENDMOD        LAB2Q1
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 001DH BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=29
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
