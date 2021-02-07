@@ -1,0 +1,80 @@
+A51 MACRO ASSEMBLER  LAB3Q2                                                               02/07/2021 16:49:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab3Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab3Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab3Q2.lst) OBJECT(.\Objec
+                      ts\Lab3Q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 309017            1     CASE1OR4: JNB P1.0,CASE2
+0003 D294              2     SETB P1.4
+0005 309102            3     JNB P1.1,NEXT1
+0008 D296              4     SETB P1.6
+000A 1133              5     NEXT1:ACALL ONESECDELAY
+000C C294              6     CLR P1.4
+000E 1133              7     ACALL ONESECDELAY
+0010 C296              8     CLR P1.6
+0012 1133              9     ACALL ONESECDELAY
+0014 1133             10     ACALL ONESECDELAY
+0016 C294             11     CLR P1.4
+0018 80E6             12     SJMP CASE1OR4
+001A 30910F           13     CASE2:JNB P1.1,CASE3
+001D D296             14     SETB P1.6
+001F 1133             15     ACALL ONESECDELAY
+0021 1133             16     ACALL ONESECDELAY
+0023 C296             17     CLR P1.6
+0025 1133             18     ACALL ONESECDELAY
+0027 1133             19     ACALL ONESECDELAY
+0029 020000           20     LJMP CASE1OR4
+002C C294             21     CASE3:CLR P1.4
+002E C296             22     CLR P1.6
+0030 020000           23     LJMP CASE1OR4
+                      24     
+0033 7E28             25     ONESECDELAY:MOV R6,#40
+0035                  26     DELAYLOOP: 
+0035 113C             27               ACALL DELAY
+0037 DEFC             28           DJNZ R6,DELAYLOOP
+0039 02004F           29           LJMP NEXT2
+003C 758901           30     DELAY: MOV TMOD,#00000001B 
+003F 758C3C           31            MOV TH0,#3CH
+0042 758AB0           32            MOV TL0,#0B0H 
+0045 D28C             33            SETB TR0 
+0047 308DFD           34     HERE: JNB TF0,HERE 
+004A C28C             35           CLR TR0 
+004C C28D             36           CLR TF0 
+004E 22               37           RET
+004F 22               38               NEXT2:RET
+                      39     END
+                             
+                                     
+A51 MACRO ASSEMBLER  LAB3Q2                                                               02/07/2021 16:49:32 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CASE1OR4 . . . . .  C ADDR   0000H   A   
+CASE2. . . . . . .  C ADDR   001AH   A   
+CASE3. . . . . . .  C ADDR   002CH   A   
+DELAY. . . . . . .  C ADDR   003CH   A   
+DELAYLOOP. . . . .  C ADDR   0035H   A   
+HERE . . . . . . .  C ADDR   0047H   A   
+NEXT1. . . . . . .  C ADDR   000AH   A   
+NEXT2. . . . . . .  C ADDR   004FH   A   
+ONESECDELAY. . . .  C ADDR   0033H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
