@@ -1,0 +1,77 @@
+A51 MACRO ASSEMBLER  LAB4Q2                                                               02/12/2021 14:41:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab4Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab4Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab4Q2.lst) OBJECT(.\Objec
+                      ts\Lab4Q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 75900F            1     FINISH:MOV P1,#00001111B
+0003 1107              2     ACALL ROUTINE
+0005 80F9              3     SJMP FINISH
+                       4     
+0007 7590FF            5     ROUTINE:MOV P1,#0FFH
+000A 7A05              6     MOV R2,#5H
+000C 1126              7     INPUTN:ACALL ONESECDELAY
+000E DAFC              8     DJNZ R2,INPUTN
+0010 E590              9     MOV A,P1
+0012 540F             10     ANL A,#00001111B
+0014 7002             11     JNZ NZ
+0016 7401             12     MOV A,#01H
+0018 FA               13     NZ:MOV R2,A
+                      14     
+0019 759000           15     BLINK:MOV P1,#00000000B
+001C 1126             16     ACALL ONESECDELAY
+001E 7590F0           17     MOV P1,#11110000B
+0021 1126             18     ACALL ONESECDELAY
+0023 DAF4             19     DJNZ R2,BLINK
+0025 22               20     RET
+                      21     
+                      22     
+0026 7E28             23     ONESECDELAY:MOV R6,#40
+0028                  24     DELAYLOOP: 
+0028 112F             25               ACALL DELAY
+002A DEFC             26           DJNZ R6,DELAYLOOP
+002C 020042           27           LJMP NEXT2
+002F 758901           28     DELAY: MOV TMOD,#00000001B 
+0032 758C3C           29            MOV TH0,#3CH
+0035 758AB0           30            MOV TL0,#0B0H 
+0038 D28C             31            SETB TR0 
+003A 308DFD           32     HERE: JNB TF0,HERE 
+003D C28C             33           CLR TR0 
+003F C28D             34           CLR TF0 
+0041 22               35           RET
+0042 22               36               NEXT2:RET
+                      37     END
+A51 MACRO ASSEMBLER  LAB4Q2                                                               02/12/2021 14:41:38 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BLINK. . . . . . .  C ADDR   0019H   A   
+DELAY. . . . . . .  C ADDR   002FH   A   
+DELAYLOOP. . . . .  C ADDR   0028H   A   
+FINISH . . . . . .  C ADDR   0000H   A   
+HERE . . . . . . .  C ADDR   003AH   A   
+INPUTN . . . . . .  C ADDR   000CH   A   
+NEXT2. . . . . . .  C ADDR   0042H   A   
+NZ . . . . . . . .  C ADDR   0018H   A   
+ONESECDELAY. . . .  C ADDR   0026H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+ROUTINE. . . . . .  C ADDR   0007H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
