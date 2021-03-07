@@ -1,0 +1,598 @@
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Dutycycle.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Dutycycle.asm SET(SMALL) DEBUG PRINT(.\Listings\Dutycycle.lst) OBJECT(.
+                      \Objects\Dutycycle.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1             ; This subroutine writes characters on the LCD
+  00A0                 2     LCD_data equ P2    ;LCD Data port
+  0080                 3     LCD_rs   equ P0.0  ;LCD Register Select
+  0081                 4     LCD_rw   equ P0.1  ;LCD Read/Write
+  0082                 5     LCD_en   equ P0.2  ;LCD Enable
+                       6     
+0000                   7     ORG 0000H
+0000 020200            8     ljmp start
+                       9     
+0200                  10     org 200h
+0200                  11     start:
+0200 51C9             12            acall lcd_init      ;initialise LCD
+                      13     
+                      14             
+0202                  15             MAIN1:
+0202 C290             16                     CLR P1.0
+0204 C291             17                     CLR P1.1
+0206 C292             18                     CLR P1.2        
+                      19                             
+                      20                             
+                      21                             
+0208 D293             22                     SETB P1.3       
+020A D294             23                     SETB P1.4
+020C D295             24                     SETB P1.5
+020E D296             25                     SETB P1.6
+0210 D297             26                     SETB P1.7
+                      27                     
+                      28             
+0212 209003           29                     JB P1.0, CASEA
+0215 309042           30                     JNB P1.0, CASEB
+                      31             
+0218 209103           32             CASEA: JB P1.1, CASEA1
+021B 30911E           33                        JNB P1.1, CASEA2
+                      34                             
+                      35                             
+021E                  36                             CASEA1:         
+                      37                                                             
+021E 209203           38                                                     JB P1.2, CASEAA1
+0221 30920C           39                                                JNB P1.2, CASEAA2
+                      40                                                     
+                      41                                                     
+0224                  42                                                     CASEAA1:        
+0224 7432             43                                                                                     mov a,#32h
+0226 F9               44                                                                                     mov r1,a
+0227 7430             45                                                                                     mov a,#30h
+0229 FA               46                                                                                     mov r2,a
+022A 7434             47                                                                                     mov a,#34h
+022C FD               48                                                                                     mov r5,a
+022D 02029C           49                                                     LJMP MAIN
+                      50                                                                             
+                      51                                                                                
+0230                  52                                                     CASEAA2:        
+0230 7433             53                                                                             mov a,#33h
+0232 F9               54                                                                                     mov r1,a
+0233 7430             55                                                                                     mov a,#30h
+0235 FA               56                                                                                     mov r2,a
+0236 7436             57                                                                                     mov a,#36h
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     2
+
+0238 FD               58                                                                                     mov r5,a
+                      59                                                                             
+0239 02029C           60                                                     LJMP MAIN
+                      61             
+                      62                             
+                      63                                             
+                      64                                                        
+023C                  65                             CASEA2:         
+                      66                                                             
+023C 209203           67                                                     JB P1.2, CASEAB1
+023F 30920C           68                                                JNB P1.2, CASEAB2
+                      69                                                     
+                      70                                                     
+0242                  71                                                     CASEAB1:        
+0242 7430             72                                                                                                
+                                                                                          mov a,#30h
+0244 F9               73                                                                                     mov r1,a
+0245 7430             74                                                                                     mov a,#30h
+0247 FA               75                                                                                     mov r2,a
+0248 7430             76                                                                                     mov a,#30h
+024A FD               77                                                                                     mov r5,a
+                      78                                                                             
+024B 02029C           79                                                     LJMP MAIN
+                      80                                                                             
+                      81                                                     
+                      82                                                                     
+                      83                                                                                
+024E                  84                                                     CASEAB2:        
+                      85                                                                                                
+                                                                                          
+024E 7430             86                                                                             mov a,#30h
+0250 F9               87                                                                                     mov r1,a
+0251 7430             88                                                                                     mov a,#30h
+0253 F9               89                                                                                     mov r1,a
+0254 7430             90                                                                                     mov a,#30h
+0256 FD               91                                                                                     mov r5,a
+0257 02029C           92                                                     lJMP MAIN
+                      93                                     
+                      94             
+025A 2091C1           95                             CASEB: JB P1.1, CASEA1
+025D 3091DC           96                                        JNB P1.1, CASEA2
+                      97                             
+                      98                             
+0260                  99                             CASEB1:         
+                     100                                                             
+0260 209203          101                                                     JB P1.2, CASEBA1
+0263 30920C          102                                                JNB P1.2, CASEBA2
+                     103                                                     
+                     104                                                     
+0266                 105                                                     CASEBA1:        
+0266 7430            106                                                                             mov a,#30h
+0268 F9              107                                                                                     mov r1,a
+0269 7430            108                                                                                     mov a,#30h
+026B FA              109                                                                                     mov r2,a
+026C 7430            110                                                                                     mov a,#30h
+026E FD              111                                                                                     mov r5,a
+026F 02029C          112                                                     LJMP MAIN
+                     113                                                                             
+                     114                                                                                
+0272                 115                                                     CASEBA2:        
+0272 7430            116                                                                             mov a,#30h
+0274 F9              117                                                                                     mov r1,a
+0275 7430            118                                                                                     mov a,#30h
+0277 FA              119                                                                                     mov r2,a
+0278 7430            120                                                                                     mov a,#30h
+027A FD              121                                                                                     mov r5,a
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     3
+
+                     122                                                                             
+027B 02029C          123                                                     LJMP MAIN
+                     124             
+                     125                             
+                     126                                             
+                     127                                                        
+027E                 128                             CASEB2:         
+                     129                                                             
+027E 209203          130                                                     JB P1.2, CASEBB1
+0281 30920C          131                                                JNB P1.2, CASEBB2
+                     132                                                     
+                     133                                                     
+0284                 134                                                     CASEBB1:        
+0284 7430            135                                                                                                
+                                                                                          mov a,#30h
+0286 F9              136                                                                                     mov r1,a
+0287 7430            137                                                                                     mov a,#30h
+0289 FA              138                                                                                     mov r2,a
+028A 7430            139                                                                                     mov a,#30h
+028C FD              140                                                                                     mov r5,a
+                     141                                                                             
+028D 02029C          142                                                     LJMP MAIN
+                     143                                                                             
+                     144                                                     
+                     145                                                                     
+                     146                                                                                
+0290                 147                                                     CASEBB2:        
+0290 7430            148                                                                                                
+                                                                                                                  mov a,#30h
+0292 F9              149                                                                                     mov r1,a
+0293 7430            150                                                                                     mov a,#30h
+0295 FA              151                                                                                     mov r2,a
+0296 7430            152                                                                                     mov a,#30h
+0298 FD              153                                                                                     mov r5,a
+0299 02029C          154                                                     LJMP MAIN
+                     155     
+                     156     
+                     157             
+                     158             
+                     159             
+029C                 160             main:
+                     161             
+                     162             
+029C 7106            163                       acall lcd_command      ;send command to LCD
+029E 7134            164               acall delay
+02A0 900300          165               mov   dptr,#my_string1   ;Load DPTR with sring1 Addr
+02A3 7126            166               acall lcd_sendstring     ;call text strings sending routine
+02A5 7134            167               acall delay
+                     168               
+02A7 748C            169               mov a,#8ch             ;Put cursor on first row,5 column
+02A9 7106            170               acall lcd_command      ;send command to LCD
+02AB 7134            171               acall delay
+                     172              
+02AD 711D            173               acall lcd_sendduty       ;call text strings sending routine
+02AF 7134            174               acall delay
+                     175               
+02B1 74CC            176               mov a,#0cch            ;Put cursor on first row,5 column
+02B3 7106            177               acall lcd_command      ;send command to LCD
+02B5 7134            178               acall delay
+                     179               
+02B7 712A            180               acall lcd_sendpulse      ;call text strings sending routine
+02B9 7134            181               acall delay
+                     182     
+02BB 74C0            183               mov a,#0c0h             ;Put cursor on second row,3 column
+02BD 7106            184               acall lcd_command
+02BF 7134            185               acall delay
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     4
+
+02C1 90030F          186               mov   dptr,#my_string2
+02C4 7126            187               acall lcd_sendstring
+02C6 020202          188                ljmp main1 
+                     189     
+                     190     ;------------------------LCD Initialisation routine----------------------------------------
+                             ------------
+02C9                 191     lcd_init:
+02C9 75A038          192              mov   LCD_data,#38H  ;Function set: 2 Line, 8-bit, 5x7 dots
+02CC C280            193              clr   LCD_rs         ;Selected command register
+02CE C281            194              clr   LCD_rw         ;We are writing in instruction register
+02D0 D282            195              setb  LCD_en         ;Enable H->L
+02D2 7134            196                      acall delay
+02D4 C282            197              clr   LCD_en
+02D6 7134            198                  acall delay
+                     199     
+02D8 75A00C          200              mov   LCD_data,#0CH  ;Display on, Curson off
+02DB C280            201              clr   LCD_rs         ;Selected instruction register
+02DD C281            202              clr   LCD_rw         ;We are writing in instruction register
+02DF D282            203              setb  LCD_en         ;Enable H->L
+02E1 7134            204                      acall delay
+02E3 C282            205              clr   LCD_en
+                     206              
+02E5 7134            207                      acall delay
+02E7 75A001          208              mov   LCD_data,#01H  ;Clear LCD
+02EA C280            209              clr   LCD_rs         ;Selected command register
+02EC C281            210              clr   LCD_rw         ;We are writing in instruction register
+02EE D282            211              setb  LCD_en         ;Enable H->L
+02F0 7134            212                      acall delay
+02F2 C282            213              clr   LCD_en
+                     214              
+02F4 7134            215                      acall delay
+                     216     
+02F6 75A006          217              mov   LCD_data,#06H  ;Entry mode, auto increment with no shift
+02F9 C280            218              clr   LCD_rs         ;Selected command register
+02FB C281            219              clr   LCD_rw         ;We are writing in instruction register
+02FD D282            220              setb  LCD_en         ;Enable H->L
+02FF 7134            221                      acall delay
+0301 C282            222              clr   LCD_en
+                     223     
+0303 7134            224                      acall delay
+                     225              
+0305 22              226              ret                  ;Return from routine
+                     227     
+                     228     ;-----------------------command sending routine-------------------------------------
+0306                 229      lcd_command:
+0306 F5A0            230              mov   LCD_data,A     ;Move the command to LCD port
+0308 C280            231              clr   LCD_rs         ;Selected command register
+030A C281            232              clr   LCD_rw         ;We are writing in instruction register
+030C D282            233              setb  LCD_en         ;Enable H->L
+030E 7134            234                      acall delay
+0310 C282            235              clr   LCD_en
+0312 7134            236                      acall delay
+                     237         
+0314 22              238              ret  
+                     239     ;-----------------------data sending routine-------------------------------------          
+                                       
+0315                 240      lcd_senddata:
+0315 F5A0            241              mov   LCD_data,A     ;Move the command to LCD port
+0317 D280            242              setb  LCD_rs         ;Selected data register
+0319 C281            243              clr   LCD_rw         ;We are writing
+031B D282            244              setb  LCD_en         ;Enable H->L
+031D 7134            245                      acall delay
+031F C282            246              clr   LCD_en
+0321 7134            247              acall delay
+0323 7134            248                      acall delay
+0325 22              249              ret                  ;Return from busy routine
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     5
+
+                     250     
+                     251     ;-----------------------text strings sending routine-------------------------------------
+0326                 252     lcd_sendstring:
+0326 C0E0            253             push 0e0h
+0328                 254             lcd_sendstring_loop:
+0328 E4              255                      clr   a                 ;clear Accumulator for any previous data
+0329 93              256                      movc  a,@a+dptr         ;load the first character in accumulator
+032A 6005            257                      jz    exit              ;go to exit if zero
+032C 7115            258                      acall lcd_senddata      ;send first char
+032E A3              259                      inc   dptr              ;increment data pointer
+032F 80F7            260                      sjmp  LCD_sendstring_loop    ;jump back to send the next character
+0331 D0E0            261     exit:    pop 0e0h
+0333 22              262              ret                     ;End of routine
+                     263     
+                     264     ;----------------------delay routine-----------------------------------------------------
+0334 C000            265     delay:   push 0
+0336 C001            266              push 1
+0338 7801            267              mov r0,#1
+033A 79FF            268     loop2:   mov r1,#255
+033C D9FE            269              loop1:  djnz r1, loop1
+033E D8FA            270              djnz r0, loop2
+0340 D001            271              pop 1
+0342 D000            272              pop 0 
+0344 22              273              ret
+                     274     
+                     275     ;------------- ROM text strings------------------------------------------------------------
+                             ---
+                     276     
+0300                 277     org 300h
+0300                 278     my_string1:
+0300 44757479        279              DB   "Duty cycle:  0", 00H
+0304 20637963                
+0308 6C653A20                
+030C 203000                  
+030F                 280     my_string2:
+030F 50756C73        281                      DB   "Pulse width: ", 00H
+0313 65207769                
+0317 6474683A                
+031B 2000                    
+                     282                              
+                     283                              
+                     284     ;-----------------------text strings sending routine-------------------------------------
+031D                 285     lcd_sendduty:
+031D C0E0            286             push 0e0h
+031F E4              287                      clr   a                 ;clear Accumulator for any previous data
+0320 E9              288                      mov a,r1         ;load the first character in accumulator
+                     289                                               ;go to exit if zero
+0321 7115            290                      acall lcd_senddata      ;send first char
+0323 7430            291                      mov  a,#'0'         ;load the first character in accumulator
+                     292                                               ;go to exit if zero
+0325 7115            293                      acall lcd_senddata 
+0327 D0E0            294         pop 0e0h
+0329 22              295              ret                     ;End of routine
+                     296                      
+                     297     ;-----------------------text strings sending routine-------------------------------------
+032A                 298     lcd_sendpulse:
+032A C0E0            299             push 0e0h
+                     300             
+032C E4              301                      clr   a                 ;clear Accumulator for any previous data
+032D EA              302                  mov  a,r2        ;load the first character in accumulator
+                     303                                               ;go to exit if zero
+032E 7115            304                      acall lcd_senddata      ;send first char
+                     305                              
+0330 ED              306                     mov  a,r5       ;load the first character in accumulator
+                     307                                               ;go to exit if zero
+0331 7115            308                      acall lcd_senddata      ;send first char
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     6
+
+                     309                              
+0333 7430            310                      mov  a,#'0'         ;load the first character in accumulator
+                     311                                               ;go to exit if zero
+0335 7115            312                      acall lcd_senddata
+0337 7430            313                             mov  a,#'0'         ;load the first character in accumulator
+                     314                                               ;go to exit if zero
+0339 7115            315                      acall lcd_senddata                      
+033B D0E0            316         pop 0e0h
+033D 22              317              ret                     ;End of routine
+                     318     
+                     319                     
+                     320                                     
+033E E590            321                     MOV A, P1       
+0340 F4              322                     CPL A
+0341 D294            323                     SETB P1.4
+0343 D295            324                     SETB P1.5
+0345 D296            325                     SETB P1.6
+0347 D297            326                     SETB P1.7
+                     327     
+                     328     
+0349 B40017          329                     CJNE A, #00H, CASEBBA
+                     330     
+                     331                                     
+                     332     
+034C 7C14            333                                     MOV R4, #14H
+                     334                                                                                                
+                                  
+034E 71AA            335                                     loopBAA11:              ACALL DELAYL
+0350 DCFC            336                                                                     DJNZ R4, loopBAA11
+                     337                             
+0352 C294            338                                                                     CLR P1.4
+0354 C295            339                                                                     CLR P1.5
+0356 C296            340                                                                     CLR P1.6
+0358 C297            341                                                                     CLR P1.7
+                     342                                                             
+035A 7C50            343                                     MOV R4, #50H
+                     344                                                             
+035C 71AA            345                                     loopBAA12:              ACALL DELAYL
+035E DCFC            346                                                                     DJNZ R4, loopBAA12         
+                                                                                                          
+                     347                                                                     
+0360 020202          348                     LJMP MAIN1                                      
+                     349                             
+                     350                                             
+                     351                     
+                     352             
+0363                 353                                     CASEBBA:                                
+0363 B40717          354                                                                     CJNE A, #07H, CASEBBAA
+                     355                                                             
+0366 7C5A            356                                                                                                
+                                                  MOV R4, #5AH
+                     357                                                                                                
+                                                                  
+0368 71AA            358                                                                     loopBBAA11:             ACA
+                             LL DELAYL
+036A DCFC            359                                                                                                
+                                  DJNZ R4, loopBBAA11
+                     360                                                             
+036C C294            361                                                                                                
+                                  CLR P1.4
+036E C295            362                                                                                                
+                                  CLR P1.5
+0370 C296            363                                                                                                
+                                  CLR P1.6
+0372 C297            364                                                                                                
+                                  CLR P1.7
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     7
+
+                     365                                                                                             
+0374 7C0A            366                                                                     MOV R4, #0AH
+                     367                                                                                             
+0376 71AA            368                                                                     loopBBAA12:             ACA
+                             LL DELAYL
+0378 DCFC            369                                                                                                
+                                  DJNZ R4, loopBBAA12                                                                                     
+                     370                                                                                                
+                                  
+037A 020202          371                                                     LJMP MAIN1
+                     372                                                             
+                     373                                                             
+                     374                                                             
+                     375                                                             
+                     376                                                             
+                     377                                                             
+                     378                                                             
+037D                 379                                                             CASEBBAA:
+                     380                                                                                             
+037D 7C14            381                                                                                                
+                                                  MOV R4, #14H
+                     382                                                                                                
+                                                                  
+037F 71AA            383                                                                                     loopIAA111:
+                                          ACALL DELAYL
+0381 DCFC            384                                                                                                
+                                                  DJNZ R4, loopIAA111
+                     385                                                                             
+                     386                                                                                                
+                                                  
+0383 FB              387                                                                                                
+                                                  MOV R3, A
+                     388                                                                                                
+                                                  
+                     389                                                                                                
+                                                                                          
+0384                 390                                                                                             loo
+                             pIAA11:              
+0384 7C0A            391                                                                                                
+                                                          MOV R4, #0AH
+0386                 392                                                                                                
+                                                          TEN:    
+0386 71AA            393                                                                                                
+                                                          ACALL DELAYL
+0388 DCFC            394                                                                                                
+                                                          DJNZ R4, TEN
+038A DBF8            395                                                                                                
+                                                          DJNZ R3, loopIAA11
+038C C293            396                                                                                                
+                                                          CLR P1.3
+038E C294            397                                                                                                
+                                                          CLR P1.4
+0390 C295            398                                                                                                
+                                                          CLR P1.5
+0392 C296            399                                                                                                
+                                                          CLR P1.6
+0394 C297            400                                                                                                
+                                                          CLR P1.7
+                     401                                                                                                
+                                          
+0396 7C0A            402                                                                                                
+                                                  MOV R4, #0AH
+                     403                                                                                                
+                                                                  
+0398 71AA            404                                                                                     loopIAA112:
+                                          ACALL DELAYL
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     8
+
+039A DCFC            405                                                                                                
+                                                  DJNZ R4, loopIAA112
+                     406                                                                             
+                     407                                                                                                
+                                          
+039C E590            408                                                                                                
+                                          MOV A, P1
+039E FB              409                                                                                                
+                                          MOV R3,A
+                     410                                                                                             
+039F 7C0A            411                                                                                             loo
+                             pIAA12:              MOV R4, #0AH
+03A1                 412                                                                                             TEN
+                             2:
+03A1 71AA            413                                                                                                
+                                                          ACALL DELAYL
+03A3 DCFC            414                                                                                                
+                                                          DJNZ R4, TEN2
+03A5 DBF8            415                                                                                                
+                                                          DJNZ R3, loopIAA12                                            
+                                                                       
+                     416                                                                                                
+                                          
+03A7 020202          417                                                     LJMP MAIN1                                 
+                                          
+                     418                                             
+                     419                                                                     
+                     420                                                     
+                     421                     
+                     422             
+                     423             
+                     424             
+03AA 758901          425                             DELAYL: MOV TMOD,#00000001B
+03AD 758C63          426                                        MOV TH0,#063H 
+03B0 758AD0          427                                        MOV TL0,#0D0H
+03B3 D28C            428                                        SETB TR0
+                     429                                        
+                     430                                        
+03B5 308DFD          431                             NOW:  JNB TF0,NOW
+                     432                             
+03B8 C28C            433                                        CLR TR0 
+03BA C28D            434                                        CLR TF0 
+                     435                                        
+                     436                                        
+03BC 22              437                                        RET
+                     438                                        
+03BD 80FE            439                                        here1:  sjmp here1              
+                     440                     END
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE     9
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E              T Y P E  V A L U E   ATTRIBUTES
+
+CASEA . . . . . . .  C ADDR   0218H   A   
+CASEA1. . . . . . .  C ADDR   021EH   A   
+CASEA2. . . . . . .  C ADDR   023CH   A   
+CASEAA1 . . . . . .  C ADDR   0224H   A   
+CASEAA2 . . . . . .  C ADDR   0230H   A   
+CASEAB1 . . . . . .  C ADDR   0242H   A   
+CASEAB2 . . . . . .  C ADDR   024EH   A   
+CASEB . . . . . . .  C ADDR   025AH   A   
+CASEB1. . . . . . .  C ADDR   0260H   A   
+CASEB2. . . . . . .  C ADDR   027EH   A   
+CASEBA1 . . . . . .  C ADDR   0266H   A   
+CASEBA2 . . . . . .  C ADDR   0272H   A   
+CASEBB1 . . . . . .  C ADDR   0284H   A   
+CASEBB2 . . . . . .  C ADDR   0290H   A   
+CASEBBA . . . . . .  C ADDR   0363H   A   
+CASEBBAA. . . . . .  C ADDR   037DH   A   
+DELAY . . . . . . .  C ADDR   0334H   A   
+DELAYL. . . . . . .  C ADDR   03AAH   A   
+EXIT. . . . . . . .  C ADDR   0331H   A   
+HERE1 . . . . . . .  C ADDR   03BDH   A   
+LCD_COMMAND . . . .  C ADDR   0306H   A   
+LCD_DATA. . . . . .  D ADDR   00A0H   A   
+LCD_EN. . . . . . .  B ADDR   0080H.2 A   
+LCD_INIT. . . . . .  C ADDR   02C9H   A   
+LCD_RS. . . . . . .  B ADDR   0080H.0 A   
+LCD_RW. . . . . . .  B ADDR   0080H.1 A   
+LCD_SENDDATA. . . .  C ADDR   0315H   A   
+LCD_SENDDUTY. . . .  C ADDR   031DH   A   
+LCD_SENDPULSE . . .  C ADDR   032AH   A   
+LCD_SENDSTRING. . .  C ADDR   0326H   A   
+LCD_SENDSTRING_LOOP  C ADDR   0328H   A   
+LOOP1 . . . . . . .  C ADDR   033CH   A   
+LOOP2 . . . . . . .  C ADDR   033AH   A   
+LOOPBAA11 . . . . .  C ADDR   034EH   A   
+LOOPBAA12 . . . . .  C ADDR   035CH   A   
+LOOPBBAA11. . . . .  C ADDR   0368H   A   
+LOOPBBAA12. . . . .  C ADDR   0376H   A   
+LOOPIAA11 . . . . .  C ADDR   0384H   A   
+LOOPIAA111. . . . .  C ADDR   037FH   A   
+LOOPIAA112. . . . .  C ADDR   0398H   A   
+LOOPIAA12 . . . . .  C ADDR   039FH   A   
+MAIN. . . . . . . .  C ADDR   029CH   A   
+MAIN1 . . . . . . .  C ADDR   0202H   A   
+MY_STRING1. . . . .  C ADDR   0300H   A   
+MY_STRING2. . . . .  C ADDR   030FH   A   
+NOW . . . . . . . .  C ADDR   03B5H   A   
+P0. . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . .  D ADDR   00A0H   A   
+START . . . . . . .  C ADDR   0200H   A   
+TEN . . . . . . . .  C ADDR   0386H   A   
+TEN2. . . . . . . .  C ADDR   03A1H   A   
+TF0 . . . . . . . .  B ADDR   0088H.5 A   
+TH0 . . . . . . . .  D ADDR   008CH   A   
+TL0 . . . . . . . .  D ADDR   008AH   A   
+TMOD. . . . . . . .  D ADDR   0089H   A   
+TR0 . . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+A51 MACRO ASSEMBLER  DUTYCYCLE                                                            03/07/2021 20:31:38 PAGE    10
+
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

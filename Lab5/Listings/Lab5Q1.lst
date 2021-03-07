@@ -1,0 +1,58 @@
+A51 MACRO ASSEMBLER  LAB5Q1                                                               03/07/2021 15:45:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab5Q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab5Q1.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab5Q1.lst) OBJECT(.\Objec
+                      ts\Lab5Q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000 7590FF            1     START:MOV P1,#0FFH
+0003 110D              2     ACALL ONESECDELAY
+0005 75900F            3     MOV P1,#0FH
+0008 110D              4     ACALL ONESECDELAY
+000A 020000            5     LJMP START
+                       6     
+                       7     
+000D 7E28              8     ONESECDELAY:MOV R6,#40
+000F                   9     DELAYLOOP: 
+000F 1116             10               ACALL DELAY
+0011 DEFC             11           DJNZ R6,DELAYLOOP
+0013 020029           12           LJMP NEXT2
+0016 758901           13     DELAY: MOV TMOD,#00000001B 
+0019 758C3C           14            MOV TH0,#3CH
+001C 758AB0           15            MOV TL0,#0B0H 
+001F D28C             16            SETB TR0 
+0021 308DFD           17     HERE: JNB TF0,HERE 
+0024 C28C             18           CLR TR0 
+0026 C28D             19           CLR TF0 
+0028 22               20           RET
+0029 22               21               NEXT2:RET
+                      22     END
+A51 MACRO ASSEMBLER  LAB5Q1                                                               03/07/2021 15:45:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0016H   A   
+DELAYLOOP. . . . .  C ADDR   000FH   A   
+HERE . . . . . . .  C ADDR   0021H   A   
+NEXT2. . . . . . .  C ADDR   0029H   A   
+ONESECDELAY. . . .  C ADDR   000DH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+START. . . . . . .  C ADDR   0000H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
