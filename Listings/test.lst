@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  TEST                                                                 02/12/2021 22:18:55 PAGE     1
+A51 MACRO ASSEMBLER  TEST                                                                 03/13/2021 18:04:23 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -8,13 +8,63 @@ ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE test.asm SET(SMALL) DEBUG PRINT
 
 LOC  OBJ            LINE     SOURCE
 
-0000 7469              1     MOV A,#69H
-0002 2448              2     ADD A,#48H
-0004 D4                3     DA A
-0005 13                4     RRC A
-0006 D4                5     DA A
-*** WARNING #A41 IN 5 (test.asm, LINE 5): MISSING 'END' STATEMENT
-A51 MACRO ASSEMBLER  TEST                                                                 02/12/2021 22:18:55 PAGE     2
+  00A0                 1     LCD_data equ P2    ;LCD Data port
+  0080                 2     LCD_rs   equ P0.0  ;LCD Register Select
+  0081                 3     LCD_rw   equ P0.1  ;LCD Read/Write
+  0082                 4     LCD_en   equ P0.2  ;LCD Enable
+  0080                 5     RS equ P0.0 ;LCD Register Select
+  0081                 6     RW equ P0.1 ;LCD Read/Write
+  0082                 7     EN equ P0.2 ;LCD Enable
+0000 1113              8             acall lcd_init
+0002 7448              9     MOV A, #48H
+0004 F5A0             10     MOV LCD_data,A
+0006 7580F9           11     MOV P0, #0F9H
+0009 D282             12     SETB EN
+000B 780A             13     MOV R0,#10
+000D D8FE             14     here:DJNZ R0,here
+000F C282             15     CLR EN
+0011 80FE             16     here1:sjmp here1
+0013                  17     lcd_init:
+0013 75A038           18              mov   LCD_data,#38H  ;Function set: 2 Line, 8-bit, 5x7 dots
+0016 C280             19              clr   LCD_rs         ;Selected command register
+0018 C281             20              clr   LCD_rw         ;We are writing in instruction register
+001A D282             21              setb  LCD_en         ;Enable H->L
+001C 1150             22                      acall delay
+001E C282             23              clr   LCD_en
+0020 1150             24                  acall delay
+                      25     
+0022 75A00C           26              mov   LCD_data,#0CH  ;Display on, Curson off
+0025 C280             27              clr   LCD_rs         ;Selected instruction register
+0027 C281             28              clr   LCD_rw         ;We are writing in instruction register
+0029 D282             29              setb  LCD_en         ;Enable H->L
+002B 1150             30                      acall delay
+002D C282             31              clr   LCD_en
+                      32              
+002F 1150             33                      acall delay
+0031 75A001           34              mov   LCD_data,#01H  ;Clear LCD
+0034 C280             35              clr   LCD_rs         ;Selected command register
+0036 C281             36              clr   LCD_rw         ;We are writing in instruction register
+0038 D282             37              setb  LCD_en         ;Enable H->L
+003A 1150             38                      acall delay
+003C C282             39              clr   LCD_en
+                      40              
+003E 1150             41                      acall delay
+                      42     
+0040 75A006           43              mov   LCD_data,#06H  ;Entry mode, auto increment with no shift
+0043 C280             44              clr   LCD_rs         ;Selected command register
+0045 C281             45              clr   LCD_rw         ;We are writing in instruction register
+0047 D282             46              setb  LCD_en         ;Enable H->L
+0049 1150             47                      acall delay
+004B C282             48              clr   LCD_en
+                      49     
+004D 1150             50                      acall delay
+                      51              
+004F 22               52              ret
+0050 C000             53                      delay:  push 0
+0052 C001             54              push 1
+0054 7801             55              mov r0,#1
+                      56     end         
+A51 MACRO ASSEMBLER  TEST                                                                 03/13/2021 18:04:23 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
@@ -22,9 +72,22 @@ SYMBOL TABLE LISTING
 
 N A M E             T Y P E  V A L U E   ATTRIBUTES
 
+DELAY. . . . . . .  C ADDR   0050H   A   
+EN . . . . . . . .  B ADDR   0080H.2 A   
+HERE . . . . . . .  C ADDR   000DH   A   
+HERE1. . . . . . .  C ADDR   0011H   A   
+LCD_DATA . . . . .  D ADDR   00A0H   A   
+LCD_EN . . . . . .  B ADDR   0080H.2 A   
+LCD_INIT . . . . .  C ADDR   0013H   A   
+LCD_RS . . . . . .  B ADDR   0080H.0 A   
+LCD_RW . . . . . .  B ADDR   0080H.1 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RS . . . . . . . .  B ADDR   0080H.0 A   
+RW . . . . . . . .  B ADDR   0080H.1 A   
 
 
 REGISTER BANK(S) USED: 0 
 
 
-ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

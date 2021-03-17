@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  LAB5Q2                                                               03/07/2021 21:10:47 PAGE     1
+A51 MACRO ASSEMBLER  LAB5Q2                                                               03/08/2021 14:49:30 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.2.7.0
@@ -65,7 +65,7 @@ LOC  OBJ            LINE     SOURCE
 0148 758AB0           55            MOV TL0,#0B0H 
 014B D28C             56            SETB TR0 
 014D 308DFD           57     HERE1: JNB TF0,HERE1
-A51 MACRO ASSEMBLER  LAB5Q2                                                               03/07/2021 21:10:47 PAGE     2
+A51 MACRO ASSEMBLER  LAB5Q2                                                               03/08/2021 14:49:30 PAGE     2
 
 0150 C28C             58           CLR TR0 
 0152 C28D             59           CLR TF0 
@@ -133,7 +133,7 @@ LOC  OBJ            LINE     SOURCE
 01B8 31FC            120                      acall delay
 01BA C282            121              clr   LCD_en
                      122              
-A51 MACRO ASSEMBLER  LAB5Q2                                                               03/07/2021 21:10:47 PAGE     3
+A51 MACRO ASSEMBLER  LAB5Q2                                                               03/08/2021 14:49:30 PAGE     3
 
 01BC 31FC            123                      acall delay
                      124     
@@ -201,7 +201,7 @@ LOC  OBJ            LINE     SOURCE
 0300                 184     org 300h
 0300                 185     my_string1:
 0300 44757479        186     DB   "Duty cycle: ", 00H
-A51 MACRO ASSEMBLER  LAB5Q2                                                               03/07/2021 21:10:47 PAGE     4
+A51 MACRO ASSEMBLER  LAB5Q2                                                               03/08/2021 14:49:30 PAGE     4
 
 0304 20637963                
 0308 6C653A20                
@@ -212,7 +212,7 @@ LOC  OBJ            LINE     SOURCE
 0315 6474683A                
 0319 00                      
                      189     end
-A51 MACRO ASSEMBLER  LAB5Q2                                                               03/07/2021 21:10:47 PAGE     5
+A51 MACRO ASSEMBLER  LAB5Q2                                                               03/08/2021 14:49:30 PAGE     5
 
 SYMBOL TABLE LISTING
 ------ ----- -------

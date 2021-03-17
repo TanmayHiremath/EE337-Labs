@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  LAB6Q2                                                               03/15/2021 04:30:45 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Lab6Q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Lab6Q2.asm SET(SMALL) DEBUG PRINT(.\Listings\Lab6Q2.lst) OBJECT(.\Objec
+                      ts\Lab6Q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 0100H
+0100                   4             MAIN:
+0100 7AF1              5     MOV R2,#0F1H
+0102 7B89              6     MOV R3,#89H
+0104 3120              7     ACALL TWOSECDELAY
+0106 7AF2              8     MOV R2,#0F2H
+0108 7BFB              9     MOV R3,#0FBH
+010A 3120             10     ACALL TWOSECDELAY
+010C 020100           11     LJMP MAIN
+010F 758911           12     DELAY1: MOV TMOD,#00010001B 
+0112 8A8C             13            MOV TH0,R2
+0114 8B8A             14            MOV TL0,R3 
+0116 D28C             15            SETB TR0 
+0118 308DFD           16     HERE1: JNB TF0,HERE1
+011B C28C             17           CLR TR0 
+011D C28D             18           CLR TF0 
+011F 22               19           RET
+0120 7E50             20     TWOSECDELAY:MOV R6,#80
+0122 3129             21     DELAYLOOP: ACALL DELAY2
+0124 DEFC             22           DJNZ R6,DELAYLOOP
+0126 020144           23           LJMP NEXT2
+0129 758911           24     DELAY2: MOV TMOD,#00010001B 
+012C 758D3C           25            MOV TH1,#3CH
+012F 758BB0           26            MOV TL1,#0B0H 
+0132 D28E             27            SETB TR1 
+0134                  28     HERE2: 
+0134 D280             29     RE:SETB P0.0
+0136 310F             30     ACALL DELAY1
+0138 C280             31     CLR P0.0
+013A 310F             32     ACALL DELAY1
+013C 308FF5           33     JNB TF1,HERE2
+013F C28E             34           CLR TR1 
+0141 C28F             35           CLR TF1 
+0143 22               36           RET
+0144 22               37               NEXT2:RET
+                      38               
+                      39               END
+A51 MACRO ASSEMBLER  LAB6Q2                                                               03/15/2021 04:30:45 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY1 . . . . . .  C ADDR   010FH   A   
+DELAY2 . . . . . .  C ADDR   0129H   A   
+DELAYLOOP. . . . .  C ADDR   0122H   A   
+HERE1. . . . . . .  C ADDR   0118H   A   
+HERE2. . . . . . .  C ADDR   0134H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+NEXT2. . . . . . .  C ADDR   0144H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+RE . . . . . . . .  C ADDR   0134H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+TWOSECDELAY. . . .  C ADDR   0120H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
