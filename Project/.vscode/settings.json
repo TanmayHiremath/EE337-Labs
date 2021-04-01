@@ -1,0 +1,11 @@
+{
+      "files.associations": {
+            "*.py": "python",
+            "*.html": "html",
+            "*.ipynb": "Jupyter",
+            "*.php": "php",
+            "sstream": "c",
+            "bitset": "c",
+            "string_view": "c"
+      }
+}

@@ -1,0 +1,137 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              03/30/2021 16:37:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <at89c5131.h>
+   2          #include "lcd.h"    //Header file with LCD interfacing functions
+   3          #include "serial.c" //C file with UART interfacing functions
+   4          #include <string.h>
+   5          #include <stdlib.h>
+   6          // #include "functions.h"
+   7          sbit LED = P1 ^ 7;
+   8          
+   9          void invalidInput()
+  10          {
+  11   1        transmit_string("Invalid input\r\n");
+  12   1        lcd_cmd(0x01);
+  13   1        lcd_cmd(0xC0);
+  14   1        lcd_write_string("Invalid input");
+  15   1        msdelay(2000);
+  16   1        lcd_cmd(0x01);
+  17   1      }
+  18          void numberNotes(char *x,int array[])
+  19          {
+  20   1        int n = atoi(x);
+  21   1        int arr[4];
+  22   1        int consta[4] = {2000, 500, 200, 100};
+  23   1        int i;
+  24   1        for (i = 0; i < 4; i++)
+  25   1        {
+  26   2          arr[i] = n / consta[i];
+  27   2          n = n % consta[i];
+  28   2        }
+  29   1      
+  30   1      }
+*** WARNING C280 IN LINE 18 OF main.c: 'array': unreferenced local variable
+  31          
+  32          //Main function
+  33          void main(void)
+  34          { int number[4]={20,30,10,10};
+  35   1        char str1[10] = "";
+  36   1        unsigned char ch = 0;
+  37   1        //Initialize port P1 for output from P1.7-P1.4
+  38   1        P1 = 0x0F;
+  39   1      
+  40   1        //Call initialization functions
+  41   1        lcd_init();
+  42   1        uart_init();
+  43   1      
+  44   1        //These strings will be printed in terminal software
+  45   1        transmit_string("************************\r\n");
+  46   1        while (1)
+  47   1        {
+  48   2          ch = receive_char();
+  49   2      
+  50   2          switch (ch)
+  51   2          {
+  52   3          case '\r':
+  53   3      
+C51 COMPILER V9.60.0.0   MAIN                                                              03/30/2021 16:37:21 PAGE 2   
+
+  54   3            if (strlen(str1) == 0)
+  55   3            {
+  56   4              invalidInput();
+  57   4            }
+  58   3            else {
+  59   4              numberNotes(str1,number);
+  60   4            }
+  61   3            break;
+  62   3          case '0':
+  63   3            if (strlen(str1) == 0)
+  64   3            {
+  65   4              invalidInput();
+  66   4            }
+  67   3            else
+  68   3            {
+  69   4              lcd_write_char(ch);
+  70   4              strncat(str1, &ch, 1);
+  71   4              transmit_char(ch);
+  72   4            }
+  73   3            break;
+  74   3      
+  75   3          case '1':
+  76   3          case '2':
+  77   3          case '3':
+  78   3          case '4':
+  79   3          case '5':
+  80   3          case '6':
+  81   3          case '7':
+  82   3          case '8':
+  83   3          case '9':
+  84   3            lcd_write_char(ch);
+  85   3            strncat(str1, &ch, 1);
+  86   3            transmit_char(ch);
+  87   3            break;
+  88   3          case 'd':
+  89   3            lcd_cmd(0x01);
+  90   3            lcd_cmd(0x80);
+  91   3            if (strlen(str1) == 0)
+  92   3            {
+  93   4              lcd_cmd(0x01);
+  94   4              lcd_cmd(0x80);
+  95   4              lcd_write_char(ch);
+  96   4            }
+  97   3            else
+  98   3            {
+  99   4              invalidInput();
+ 100   4            }
+ 101   3            break;
+ 102   3          default:
+ 103   3            transmit_char(ch);
+ 104   3            break;
+ 105   3          }
+ 106   2          msdelay(100);
+ 107   2        }
+ 108   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    776    ----
+   CONSTANT SIZE    =     83    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              03/30/2021 16:37:21 PAGE 3   
+
+   DATA SIZE        =   ----      54
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
